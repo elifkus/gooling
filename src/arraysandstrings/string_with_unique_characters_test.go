@@ -20,3 +20,18 @@ func TestContainsOnlyUniqueChars(t *testing.T) {
 	}
 }
 
+func TestContainsOnlyUniqueCharsFaster(t *testing.T) {
+	cases := []struct {
+		in string; want bool
+	}{
+		{"Hello, world", false},
+		{"Hello, 世界", false},
+		{"a", true},
+	}
+	for _, c := range cases {
+		got := ContainsOnlyUniqueCharsFaster(c.in)
+		if got != c.want {
+			t.Errorf("Reverse(%q) == %t, want %t", c.in, got, c.want)
+		}
+	}
+}
