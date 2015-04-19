@@ -1,6 +1,5 @@
 package arraysandstrings 
 
-
 func ContainsOnlyUniqueChars(str string) bool {
 	m := make(map[rune]int)
 	
@@ -38,10 +37,26 @@ func ContainsOnlyUniqueCharsWithoutDataStructure(str string) bool {
 	return true
 	}
 
-func Exists(m int, c rune) bool {
+
+func ContainsOnlyUniqueCharsForLowerAscii(str string) bool {
+	var tally uint = 0
+	var offset uint;
+	var mask uint = 0
+	
+	for _, c := range str {
+		
+		offset = uint(c - 'a')
+		
+		mask = 0
+		mask = 1 << offset 		
+	
+		if (tally & mask > 0) {
+			return false
+			}
+		tally |= mask
+		}
+	
 	return true
+		
 	}
 
-func Add(m int, c rune) {
-	
-	}
