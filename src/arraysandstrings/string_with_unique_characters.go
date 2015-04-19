@@ -1,6 +1,5 @@
 package arraysandstrings 
 
-import "fmt"
 
 func ContainsOnlyUniqueChars(str string) bool {
 	m := make(map[rune]int)
@@ -20,26 +19,20 @@ func ContainsOnlyUniqueChars(str string) bool {
 	}
 
 
-func ContainsOnlyUniqueCharsFaster(str string) bool {
-	var m1 uint64
-    var m2 uint64
-    m1 = 0
-    m2 = 0
-    
-    var m int64
-    
-	for _, c := range str {
+func ContainsOnlyUniqueCharsWithoutDataStructure(str string) bool {
 	
-		if ( c>64 ) {
-			m = m2
-			} else {
-				m = m1
+	var substr string
+	
+	for i, c := range str {
+		
+		substr = str[i+1:]
+		
+		for _, o := range substr {
+			if (c == o) {
+				return false
 				}
-			
-		if ( Exists(m,c)) {
-			return false
 			}
-
+		
 	}
 		
 	return true
