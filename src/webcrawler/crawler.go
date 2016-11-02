@@ -6,7 +6,7 @@ import (
 	 "os"
 	 "net/http"      
      "github.com/jackdanger/collectlinks"  
-
+     "crypto/tls"  
 )
 
 func main() {
@@ -23,7 +23,17 @@ func main() {
 
 func retrieve(uri string) {
 	
-	response, err := http.Get(uri)
+	tlsConfig := &tls.Config{  
+		InsecureSkipVerify: true,  
+	}                            
+    
+    transport := &http.Transport{    
+	    TLSClientConfig: tlsConfig,    
+	  }                                
+
+    client := http.Client{Transport: transport} 
+	
+	response, err := client.Get(uri)
 	
 	if err != nil {
 		return
