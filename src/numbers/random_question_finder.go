@@ -14,13 +14,10 @@ func FindQuestion() (int, int) {
 	for _, numberOfQuestions := range numberOfQuestionsByChapters {
 		sum += numberOfQuestions
 	}
-	
-	fmt.Printf("sum: %d\n", sum)
-	
+		
 	rand.Seed(time.Now().UnixNano())
 	
 	number := rand.Intn(sum) + 1
-	fmt.Printf("number: %d\n", number)
 
 	var n int 
 	currentRunningSum := 0
