@@ -27,7 +27,7 @@ func FindQuestion() (int, int) {
 		previousRunningSum = currentRunningSum
 		currentRunningSum += numberOfQuestions
 		n=i
-		if currentRunningSum > number {
+		if currentRunningSum + 1 > number {
 			break
 		}
 		
