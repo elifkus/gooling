@@ -97,7 +97,7 @@ func WriteFileLinksToFileAsJSON(fileLinks []GistFile, filename string) error {
 	return err
 }
 
-func RetrieveAllContentInFileLinkData(filename string) ([]string, error) {
+func RetrieveLinksInFileLinkData(filename string) ([]string, error) {
 	fileContent, err := ioutil.ReadFile(filename)
 	
 	if err != nil {
@@ -116,7 +116,7 @@ func RetrieveAllContentInFileLinkData(filename string) ([]string, error) {
 	return allLinks, err
 }
 
-func WriteFileContentToFileAsJSON(fileLinks []string, filename string) error {	
+func RetrieveAndWriteFileContentToFileAsJSON(fileLinks []string, filename string) error {	
 	
 	var fileContents []byte 
 	
@@ -175,8 +175,8 @@ func RetrieveGistDataFromGithubAndSaveToFile(filename string) {
 }
 
 func RetreiveGistContentFromGithubAndSaveToFile(gistFilename string, contentFilename string) {
-	allLinks, _ := RetrieveAllContentInFileLinkData(gistFilename)
-	WriteFileContentToFileAsJSON(allLinks, contentFilename)
+	allLinks, _ := RetrieveLinksInFileLinkData(gistFilename)
+	RetrieveAndWriteFileContentToFileAsJSON(allLinks, contentFilename)
 }
 
 func main() {
