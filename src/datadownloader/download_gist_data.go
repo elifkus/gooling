@@ -7,6 +7,7 @@ import (
 	"encoding/json"
 	"io/ioutil"
 	"net/http"
+	"time"
 )
 
 type GistFile struct {
@@ -180,11 +181,17 @@ func RetreiveGistContentFromGithubAndSaveToFile(gistFilename string, contentFile
 }
 
 func main() {
+	now := time.Now().UTC()
+  
 	filename := "filelinkdata.json"
 	//RetrieveGistDataFromGithubAndSaveToFile(filename)
 
 	contentFilename := "postdata.json"	
-	RetreiveGistContentFromGithubAndSaveToFile(filename, contentFilename)
+	//RetreiveGistContentFromGithubAndSaveToFile(filename, contentFilename)
+	allLinks, _ := RetrieveLinksInFileLinkData(filename)
+	RetrieveAndSaveContentToFile(allLinks, contentFilename)
+	
+	fmt.Println("Time passed: ", time.Since(now))
 }
 
 
