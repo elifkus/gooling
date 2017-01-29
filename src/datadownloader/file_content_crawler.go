@@ -26,7 +26,7 @@ func RetrieveAndSaveContentToFile(fileLinks []string, filename string) error {
     waitForSliceToBeFilled.Add(1)
 	
 	log.Print("Started retrievers")
-	for i:=0; i<10; i++ {
+	for i:=0; i<20; i++ {
 		waitForRetrieversToFinish.Add(1)
 		go RetrieveContent(i, &waitForRetrieversToFinish)
 	}
